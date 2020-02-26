@@ -194,7 +194,7 @@ def apply_script(protocol, connection, config):
             if not local:
                 self.protocol.send_contained(change_weapon, save = True)
                 if not no_kill:
-                    self.kill(type = CLASS_CHANGE_KILL)
+                    self.kill(kill_type = CLASS_CHANGE_KILL)
 
         def _on_fire(self):
             if self.team is not None and self.world_object is not None:
