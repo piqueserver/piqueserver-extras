@@ -10,7 +10,7 @@ Options
 ^^^^^^^
 
 .. code-block:: toml
-    [charge]
+    [rocket]
     color = [0, 0, 0]
     streak = 8
     # Grant 1 charge for capturing the flag 
