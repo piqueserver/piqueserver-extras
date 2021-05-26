@@ -50,12 +50,17 @@ def apply_script(protocol, connection, config):
             if self.admin:
                 give_fast(self, name)
 
+        def on_disconnect(self):
+            if self in self.protocol.accelerated:
+                self.protocol.accelerated.remove(self)
+            return connection.on_disconnect(self)
+
 
     class FastMovementProtocol(protocol):
         accelerated = []
 
         def on_world_update(self):
-            for player in self.accelerated:
+            for player in self.accelerated: # TODO fix spectators
                 if player.up or player.down or player.left or player.right:
                     pos = player.world_object.position
                     vel = player.world_object.velocity
