@@ -32,7 +32,7 @@ ROCKET_CONFIG = config.section('rocket')
 ROCKET_COLOR = ROCKET_CONFIG.option('color', (0, 0, 0))
 ROCKET_STREAK_REQUIREMENT = ROCKET_CONFIG.option('streak', 8)
 ROCKET_FOR_FLAG = ROCKET_CONFIG.option('for_flag', True)
-ROCKET_SPEED = ROCKET_CONFIG.option('speed', 1.3)
+ROCKET_SPEED = ROCKET_CONFIG.option('speed', 1.1)
 
 @command('rocket', admin_only=True)
 def give_rocket(connection, player):
@@ -111,7 +111,7 @@ def apply_script(protocol, connection, config):
                         self.protocol.rocket_users_list.remove(self)
                 else:
                     self.send_chat_error("You have no rockets. Capture flag/tent or do %i kill streak" %
-                                        ROCKET_STREAK_REQUIREMENT)
+                                        ROCKET_STREAK_REQUIREMENT.get())
             connection.on_secondary_fire_set(self, secondary)
 
         def on_spawn(self, pos):
